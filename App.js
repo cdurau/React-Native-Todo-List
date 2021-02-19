@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import Header from './components/Header';
+
 export default function App() {
     const [todos, setTodos] = useState([
         { text: 'buy coffee', key: '1' },
@@ -11,15 +13,11 @@ export default function App() {
 
     return (
         <SafeAreaView style={styles.container}>
-            {/* Header */}
+            <Header />
             <View style={styles.content}>
                 {/* Todo Form */}
                 <View style={styles.list}>
-                    <FlatList
-                        // prettier-ignore
-                        data={todos}
-                        renderItem={({ item }) => <Text>{item.text}</Text>}
-                    />
+                    <FlatList data={todos} renderItem={({ item }) => <Text>{item.text}</Text>} />
                 </View>
             </View>
         </SafeAreaView>
@@ -31,8 +29,10 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff'
     },
-    content: {},
+    content: {
+        paddingHorizontal: 40
+    },
     list: {
-        color: '#000'
+        marginTop: 20
     }
 });
